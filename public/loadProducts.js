@@ -1,7 +1,7 @@
 
 async function lodaProducts() {
     try {
-const response = await fetch('https://vtjvlad.ddns.net/api/products');
+const response = await fetch('https://dzshop24.com/api/products');
         products = await response.json();
         
     console.log(products); // data - массив объектов (если API возвращает массив)

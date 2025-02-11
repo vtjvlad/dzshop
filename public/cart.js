@@ -1,6 +1,6 @@
 /* cart.js */
 
-const API_BASE_URL = 'https://vtjvlad.ddns.net'; // Замените на URL вашего backend
+const API_BASE_URL = 'https://dzshop24.com'; // Замените на URL вашего backend
 
 // Функция для получения токена (замените на ваш метод получения токена)
 function getAuthToken() {

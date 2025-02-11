@@ -1,5 +1,5 @@
 
-const apiUrl = 'https://vtjvlad.ddns.net'; // URL вашего сервера
+const apiUrl = 'https://dzshop24.com'; // URL вашего сервера
 document.addEventListener('DOMContentLoaded', async function accessProtectedContent() {
     const token = localStorage.getItem('token');
 
