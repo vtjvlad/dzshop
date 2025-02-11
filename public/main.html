@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DealZone</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+
+
+</head>
+<body>
+    <!--
+        <div id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+       -->
+
+    <!-- Header -->
+    <header>
+        <a href="#" onclick="showSection('home'); return false;">
+            <img src="img/1.jpg" alt="logo" class="logo">
+        </a>
+
+        <button class="cart-button" onclick="showSection('cart')">
+            Корзина <!--(<span id="cart-count">0</span>)-->
+        </button>
+        <div class="cart-count">
+            <span id="cart-count">0</span>
+        </div>
+
+
+        <button class="burger" id="burgerButton">
+            <i class="fas fa-bars" id="burgerMenuIcon" onclick="toggleMenu()"></i>
+        </button>
+        <div
+            class="menu" id="menu">
+
+            <div class="arket">
+                <button type="button" class="market" id="market"onclick="showSection('catalog')">
+                    Каталог
+                </button>
+            </div>
+
+            <a href="#home">Главная</a>
+            <a href="#about"> Инфо</a>
+            <a href="#services">Тех поддержка</a>
+            <a href="#" onclick="showSection('test-category')">test1</a>
+            <a href="#" onclick="showSection('Categorys-Preview')">test</a>
+            <a href="#" onclick="showSection('catalog')">Каталог</a>
+        </div>
+
+
+
+
+        <button id="toggleNavbar" class="toggle-navbar-btn">Навигация</button>
+
+
+
+    </header>
+    <h1>DealZone</h1>
+    <!-- Navigation Bar -->
+    <!--  <div class="navbar container">
+                        <a href="#">лавна</a>
+                        <a href="index 2.html">атало</a>
+                        <a href="#"> на</a>
+                        <a href="#">онтакт</a>
+                        <a href="#">орзина</a>
+                    </div> -->
+
+
+    <div class="container">
+        <div class="navbar container">
+
+            <a href="#" onclick="showSection('home')">Главная</a>
+            <a href="#" onclick="showSection('catalog')">Каталог</a>
+            <a href="#" onclick="showSection('about')">Акции</a>
+            <a href="#" onclick="showSection('contacts')">Инфо</a>
+
+            <a href="#" onclick="showSection('user')">Проиль</a>
+            <a href="#" onclick="showSection('cart')">Корзина</a>
+        </div>
+
+
+        <!-- Product Section -->
+
+
+
+
+        <section id="home" class="content-section">
+            <div class="welcome-banner">
+                <h2>Добро пожаловать в DealZone!</h2>
+                <p>
+                    Здесь вы найдете лучшие предложения и скидки!
+                </p>
+            </div>
+
+        </section>
+
+
+
+        <section id="catalog" class="content-section" style="display: none;">
+            <h2>Каталог</h2>
+
+
+
+            <div id="catalog-ctg" class="categories">
+
+                <div class="category-card" data-bg="./img/ctgr1.jpg">
+                    <div class="category-header" onclick="toggleCategory(this, 'category1')">
+                        <h3>Категория 1</h3>
+                    </div>
+                    <div class="category-content" id="category1">
+                        <!-- Товары категории 1 -->
+                    </div>
+                </div>
+                <div class="category-card" data-bg="./img/ctgr2.jpg">
+                    <div class="category-header" onclick="toggleCategory(this, 'category2')">
+                        <h3>Категория 2</h3>
+                    </div>
+                    <div class="category-content" id="category2">
+                        <div class="products"></div>
+                        <!-- Товары категории 2 -->
+                    </div>
+                </div>
+                <!-- Добавьте больше категорий, если нужно -->
+                <div class="category-card" data-bg="./img/ctgr3.jpg">
+                    <div class="category-header" onclick="toggleCategory(this, 'category3')">
+                        <h3>Категория 3</h3>
+                    </div>
+                    <div class="category-content" id="category3">
+                   Товары категории
+                    </div>
+                </div>
+
+
+                <div class="category-card" data-bg="./img/ctgr4.jpg">
+                    <div class="category-header" onclick="toggleCategory(this, 'category4')">
+                        <h3>Категория 4</h3>
+                    </div>
+                    <div class="category-content" id="category4">
+                        Товары категории 4
+                    </div>
+                </div>
+
+
+
+                <div class="category-card" data-bg="./img/ctgr5.jpg">
+                    <div class="category-header" onclick="toggleCategory(this, 'category5')">
+                        <h3>Категория 5</h3>
+                    </div>
+                    <div class="category-content" id="category">
+                        Товары категории 5 
+                    </div>
+                </div>
+            </div>
+            <!--
+                    <div class="all-categories" id="all-categories">
+                           <!-- all-categories Card 1 -->
+            <!--    <div class="ctgr1-card">
+                                    <div class="ctgr1-front">
+                                           <h3>Категория 1</h3>
+                             <div class="products"></div>
+                                 <div class="ctgr1-back">
+                                    </div>
+                                </div>
+                            </div>
+                    </div> -->
+
+
+
+
+        </section>
+
+        <div class="container">
+
+            <section id="about" class="content-section" style="display: none;">
+                <h2>O наc</h2>
+                <p>
+                    DealZone — интернет-магазин стоковых товаров с широким ассортиментом, низкими ценами и быстрой доставкой. У нас вы найдете качественную одежду, электронику, товары для дома и многое другое по сниженным ценам.<br> DealZone — экономьте с удовольствием!
+                </p>
+            </section>
+        </div>
+
+        <div class="container">
+
+            <section id="contacts" class="content-section" style="display: none;">
+                <h2>Контакты</h2>
+                <p>
+                    Свяжитесь с нами:
+                </p>
+                <ul>
+                    <li>Телео: +380 (95) 109-70-83</li>
+                    <li>Email: vtj.vlad@gmail.com</li>
+                    <li>Адрес: г.Хуст,
+                        Укаина</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="container">
+            <section id="user" class="content-section" style="display: none;">
+
+
+                <p>
+                    Добро пожаловать,
+                </p>
+                <p></p>
+
+                <!-- риме итории заказов -->
+                <div class="order-history">
+                    <h3>История заказов</h3>
+                    <p>
+                        Вы пока не сделали ни одного заказа.
+                    </p>
+                    <!-- де можно добави динамиеку итори заказов -->
+                </div>
+            </section>
+        </div>
+
+        <div class="container">
+
+            <section id="cart" class="content-section" style="display: none;">
+                <h2>Корзина</h2>
+                <div class="cart-items">
+                    <div class="cart-total"></div>
+                    <button class="checkout-button" style="display: none;">Оплатить</button>
+                </div>
+            </div>
+            <p>
+                <!--    аш козина пт. обавьт овар из <a href="#" onclick="showSection('catalog')">каалог</a>. -->
+            </p>
+
+        </section>
+
+
+
+
+        <div class="container">
+            <section id="payment" class="content-section" style="display: none;">
+                <h2>Оплат</h2>
+                <p>
+                    Информация о спообах оплаты.
+                </p>
+                <div id="order-form" class="order-form" style="display: none;">
+                    <h2>Оформление заказа</h2>
+
+                    <form id="checkout-form">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="phone">Номер телефона:</label>
+                        <input type="tel" id="phone" name="phone" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="address">Адрес доставки:</label>
+                        <input type="text" id="address" name="address" required>
+
+                        <label for="payment-method">Метод оплаты:</label>
+                        <select id="payment-method" name="payment-method" required>
+                            <option value="card">Карта</option>
+                            <option value="cash">Наличными при полчении</option>
+                            <option value="online">Онлайн</option>
+                        </select>
+
+                        <button type="submit">Подтвердить заказ</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <div class="container">
+            <section id="delivery" class="content-section" style="display: none;">
+                <h2>Доставка</h2>
+                <p>
+                    Информация о доставке и вариантах получения товаров.
+                </p>
+            </section>
+        </div>
+
+
+
+
+
+        <div class="navbarbot">
+            <a href="#" onclick="showSection('user')"><i class="fas fa-user"></i></a>
+            <a href="#" onclick="showSection('catalog')"><i class="fas fa-store"></i></a>
+            <a href="#" onclick="showSection('cart')"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#" onclick="showSection('payment')"><i class="fas fa-credit-card"></i></a>
+            <a href="#" onclick="showSection('delivery')"><i class="fas fa-truck"></i></a>
+        </div>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="wrapper">
+                <a href="#" class="icon"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://www.instagram.com/vtjvlad/" class="icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-pinterst"></i></a>
+            </div>
+            <p>
+                2024
+            </p>
+        </footer>
+        <script>
+            // Функция для скрытия загрузочного экрана
+            function hideLoadingScreen() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.display = 'none'; // Скрываем загрузочный экран
+                    console.log('Загрузочный экран скрыт'); // Сообщение для отладки
+                } else {
+                    console.log('Не найден элемент с id loadingScreen');
+                }
+            }
+
+            // Скрываем загрузочный экран через 4 секунды
+            setTimeout(hideLoadingScreen, 4000);
+
+            /*/ Скрыть загрузочный экран после полной загрузки страницы
+window.addEventListener('load', function() {
+    console.log('Страница загружена'); // Сообщение для отладки
+    hideLoadingScreen();
+}); */
+
+        </script>
+
+    <script src="auth3.js"></script>
+        <script src="script.js"></script>
+        <script src="cart.js"></script>
+
+    </body>
+</html>
