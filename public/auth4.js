@@ -75,7 +75,7 @@ console.log(`${token}`);
     } else {
       const result = confirm('Продолжить через Телеграм?');
         if (result) {
-            const gototg = window.location.href = 'https://t.me/trexyieldbot?startapp';
+            const gototg = window.location.href = 'https://t.me/dealzonstock_bot?startapp';
         } else {
             alert('Чтобы продолжить нужно войти или зарегестрироваться!');
         }
