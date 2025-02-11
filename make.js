@@ -78,13 +78,13 @@ function appendArrayFromMultipleFiles(templatePath, valueFiles, outputPath) {
 appendArrayFromMultipleFiles(
     'output.json',
     {
-      "id": "",
+      "id": "../id",
       "name": "../product_name",
       "description": "../prod_description",
       "count": "../1",
       "preview_link": "../product_imglinks",
       "send_preview_as_document": "../0",
-      "article": "",
+      "article": "../articule",
       "enabled": "../1",
       "category": "../prod_category",
       "purchase_success_command": "",

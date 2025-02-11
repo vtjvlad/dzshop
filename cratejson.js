@@ -31,4 +31,4 @@ function copyKeysFromArrayObject(templatePath, outputPath, defaultValue = null) 
 }
 
 // Пример использования
-copyKeysFromArrayObject('data.json', 'output.json', '');
+copyKeysFromArrayObject('prods.json', 'output.json', '');
