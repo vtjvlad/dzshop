@@ -8,6 +8,7 @@ const path = require('path')
 require('dotenv').config();
 
 const cors = require('cors');
+const { log } = require('console');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -360,6 +361,7 @@ app.put('/api/cart/update/:productId', authenticateToken, async (req, res) => {
 // API для получения всех товаров
 app.get('/api/products', async (req, res) => {
     try {
+        console.log('запрос списка продуктов');
         const products = await Products.find();
         res.json(products);
     } catch (err) {

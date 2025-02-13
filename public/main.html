@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="mmenu.css">
+    <link rel="stylesheet" href="modal.css">
 
 
 </head>
@@ -101,60 +103,78 @@
 
 
 
-        <section id="catalog" class="content-section" style="display: none;">
+        <section id="catalog" class="content-section catalog" style="display: none;">
             <h2>Каталог</h2>
 
 
 
             <div id="catalog-ctg" class="categories">
 
-                <div class="category-card" data-bg="./img/ctgr1.jpg">
+                <div class="category-card" data-bg="./img/relax.jpeg">
                     <div class="category-header" onclick="toggleCategory(this, 'category1')">
-                        <h3>Категория 1</h3>
+                        <h3>Для затишку</h3>
                     </div>
                     <div class="category-content" id="category1">
                         <!-- Товары категории 1 -->
+                        <div class="products"></div>
                     </div>
                 </div>
-                <div class="category-card" data-bg="./img/ctgr2.jpg">
+                <div class="category-card" data-bg="./img/her.png">
                     <div class="category-header" onclick="toggleCategory(this, 'category2')">
-                        <h3>Категория 2</h3>
+                        <h3>Для Неї</h3>
                     </div>
                     <div class="category-content" id="category2">
-                        <div class="products"></div>
+                        <div class="products2"></div>
                         <!-- Товары категории 2 -->
                     </div>
                 </div>
                 <!-- Добавьте больше категорий, если нужно -->
-                <div class="category-card" data-bg="./img/ctgr3.jpg">
+                <div class="category-card" data-bg="./img/barber.jpeg">
                     <div class="category-header" onclick="toggleCategory(this, 'category3')">
-                        <h3>Категория 3</h3>
+                        <h3>Для Догляду за волллсям</h3>
                     </div>
                     <div class="category-content" id="category3">
+
+                        <div class="products3"></div>
                    Товары категории
                     </div>
                 </div>
 
 
-                <div class="category-card" data-bg="./img/ctgr4.jpg">
+                <div class="category-card" data-bg="./img/kitchen.jpeg">
                     <div class="category-header" onclick="toggleCategory(this, 'category4')">
-                        <h3>Категория 4</h3>
+                        <h3>Для кухні</h3>
                     </div>
                     <div class="category-content" id="category4">
+
+                        <div class="products4"></div>
                         Товары категории 4
                     </div>
                 </div>
 
 
 
-                <div class="category-card" data-bg="./img/ctgr5.jpg">
+                <div class="category-card" data-bg="./img/home.jpeg">
                     <div class="category-header" onclick="toggleCategory(this, 'category5')">
-                        <h3>Категория 5</h3>
+                        <h3>Для дому</h3>
                     </div>
-                    <div class="category-content" id="category">
+                    <div class="category-content" id="category5">
+
+                        <div class="products5"></div>
                         Товары категории 5 
                     </div>
                 </div>
+                <div class="category-card" data-bg="./img/media.jpeg">
+                    <div class="category-header" onclick="toggleCategory(this, 'category6')">
+                        <h3>Media</h3>
+                    </div>
+                    <div class="category-content" id="category6">
+
+                        <div class="products6"></div>
+                        Товары категории 5 
+                    </div>
+                </div>
+
             </div>
             <!--
                     <div class="all-categories" id="all-categories">
@@ -168,7 +188,20 @@
                                 </div>
                             </div>
                     </div> -->
+<!-- Модальное окно -->
+<div id="product-modal" class="modal">
+   <div class="modal-content">
+            <span class="close" oneclick="closeModal()">&times;</span>
+        <img src="" alt="" class="modal-image" id="modal-img">
+        <h3 id="modal-title"></h3>
+                        <p id="modal-description"></p>
+        <h6 id="modal-article">артикул товара:</h6>
+        <h6 id="modal-id-short">идентификатор товара:</h6>
+        <h6 id="modal-id">артикул товара:</h6>
 
+
+                        <button class="add-to-cart" id="modal-buy-btn" onclick="addToCart(`${product._id}`)"><a id="modal-price"></a> </button>
+            </div>
 
 
 
@@ -294,7 +327,21 @@
             <a href="#" onclick="showSection('delivery')"><i class="fas fa-truck"></i></a>
         </div>
 
+<nav class="mini_menu">
+  <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
+  <label class="menu-open-button" for="menu-open">
+    <span class="hamb hamb-1"></span>
+    <span class="hamb hamb-2"></span>
+    <span class="hamb hamb-3"></span>
+  </label>
+  
+  <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
+  <a href="#" class="menu-item"> <i class="fa fa-plus"></i> </a>
+  <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
+  <a href="#" class="menu-item"> <i class="fa fa-envelope"></i> </a>
+  <a href="#" class="menu-item"> <i class="fa fa-cog"></i> </a>
 
+</nav>
         <!-- Footer -->
         <footer>
             <div class="wrapper">

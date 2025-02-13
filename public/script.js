@@ -13,12 +13,69 @@
 //
 document.addEventListener('DOMContentLoaded', () => {
     displayProducts();
+displayProducts2(); 
+displayProducts3();
+displayProducts4(); 
+displayProducts5();
+displayProducts6();  
     loadCart(); // <-- Добавьте эту строку
     updateCartCount();
+renderModals();
 });
 
 const storedProducts = localStorage.getItem('products');
 const products = storedProducts ? JSON.parse(storedProducts) : [];
+
+const items = products;
+        
+const groupedItems = items.reduce((acc, item) => {
+  const key = item.category;  // Ключ, по которому группируем
+  if (!acc[key]) {
+    acc[key] = [];
+  }
+  acc[key].push(item);
+  return acc;
+}, {});
+
+console.log(groupedItems);
+
+
+const mediaItems = groupedItems["Media"];
+const kitchenItems = groupedItems["Для кухні"];
+const relaxItems = groupedItems["Для затишку"];
+const homeItems = groupedItems["Для дому"];
+const herItems = groupedItems["Для Неї"];
+const barberItems = groupedItems["Для Догляду за волоссям"];
+
+  
+function renderModals() {
+    const catalogSection = document.querySelector("#catalog .cataloge");
+    catalogSection.innerHTML = "";
+
+    products.forEach(product => {
+        const modalCard = document.createElement("div");
+        modalCard.classList.add("modals");
+        modalCard.dataset.productId = product._id;
+
+        modalCard.innerHTML = `
+
+<div id="${products._id}" class="modal">
+   <div class="modal-content">
+            <span class="close" oneclick="closemodal()">&times;</span>
+        <img src="${product.preview_link}" alt="${product.name}" class="priduct-image">
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <h6>идентификатор товара:   ${product.id}</h6>
+        <h6>артикул товара:   ${product.aricle}</h6>
+
+        <button class="add-to-cart" onclick="event.stoppropagation(); addtocart('${product._id}')">  ${product.uah} грн. </button>
+            </div>
+        `;
+
+
+        catalogSection.appendChild(modalCard);
+    });
+}
 
 
 
@@ -26,7 +83,40 @@ function displayProducts() {
     const catalogSection = document.querySelector("#catalog .products");
     catalogSection.innerHTML = "";
 
-    products.forEach(product => {
+    relaxItems.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+        productCard.dataset.productId = product._id;
+        productCard.setAttribute("onclick", "toggleFlip(event)");
+
+        productCard.innerHTML = `
+            <div class="product-inner">
+                <div class="product-front">
+                    <img 
+                        src="${product.preview_link}" 
+                        alt="${product.name}" 
+                        class="product-image" id="${products._id}">
+                    <h3>${product.name}</h3>
+                    <div class="price"><p>${product.UAH} грн.</p></div>
+                    <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
+                </div>
+                <div class="product-back">
+                    <h2>Описание продукта</h2>
+                    <p>${product.description}</p>
+                </div>
+            </div>
+        `;
+
+        catalogSection.appendChild(productCard);
+    });
+}
+
+// Функция для открытия модального окна (не забудьте ее добавить)
+function displayProducts2() {
+    const catalogSection = document.querySelector("#catalog .products2");
+    catalogSection.innerHTML = "";
+
+    herItems.forEach(product => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
         productCard.setAttribute("onclick", "toggleFlip(event)");
@@ -40,7 +130,120 @@ function displayProducts() {
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
         </div>
         <div class="product-back">
-        <h3>Описание продукта</h3>
+        <h2>Описание продукта</h2>
+        <p>${product.description}</p>
+        </div>
+        </div>
+        `;
+
+        catalogSection.appendChild(productCard);
+    });
+}
+
+
+function displayProducts3() {
+    const catalogSection = document.querySelector("#catalog .products3");
+    catalogSection.innerHTML = "";
+
+    barberItems.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+        productCard.setAttribute("onclick", "toggleFlip(event)");
+
+        productCard.innerHTML = `
+        <div class="product-inner">
+        <div class="product-front">
+        <img src="${product.preview_link}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <div class="price"><p>${product.UAH} грн.</p> </div>
+        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
+        </div>
+        <div class="product-back">
+        <h2>Описание продукта</h2>
+        <p>${product.description}</p>
+        </div>
+        </div>
+        `;
+
+        catalogSection.appendChild(productCard);
+    });
+}
+
+function displayProducts4() {
+    const catalogSection = document.querySelector("#catalog .products4");
+    catalogSection.innerHTML = "";
+
+    kitchenItems.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+        productCard.setAttribute("onclick", "toggleFlip(event)");
+
+        productCard.innerHTML = `
+        <div class="product-inner">
+        <div class="product-front">
+        <img src="${product.preview_link}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <div class="price"><p>${product.UAH} грн.</p> </div>
+        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
+        </div>
+        <div class="product-back">
+        <h2>Описание продукта</h2>
+        <p>${product.description}</p>
+        </div>
+        </div>
+        `;
+
+        catalogSection.appendChild(productCard);
+    });
+}
+
+function displayProducts5() {
+    const catalogSection = document.querySelector("#catalog .products5");
+    catalogSection.innerHTML = "";
+
+    homeItems.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+        productCard.setAttribute("onclick", "toggleFlip(event)");
+
+        productCard.innerHTML = `
+        <div class="product-inner">
+        <div class="product-front">
+        <img src="${product.preview_link}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <div class="price"><p>${product.UAH} грн.</p> </div>
+        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
+        </div>
+        <div class="product-back">
+        <h2>Описание продукта</h2>
+        <p>${product.description}</p>
+        </div>
+        </div>
+        `;
+
+        catalogSection.appendChild(productCard);
+    });
+}
+
+function displayProducts6() {
+    const catalogSection = document.querySelector("#catalog .products6");
+    catalogSection.innerHTML = "";
+
+    mediaItems.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.classList.add("product-card");
+        productCard.setAttribute("onclick", "toggleFlip(event)");
+
+        productCard.innerHTML = `
+        <div class="product-inner">
+        <div class="product-front">
+        <img src="${product.preview_link}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <div class="price"><p>${product.UAH} грн.</p> </div>
+        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
+        </div>
+        <div class="product-back">
+        <h2>Описание продукта</h2>
         <p>${product.description}</p>
         </div>
         </div>
@@ -222,7 +425,16 @@ function renderCategoryProducts(categoryId, container) {
 
 
 // Вызов функции при загрузке страницы
+
+renderModals();
 displayProducts();
+displayProducts2(); 
+displayProducts3();
+displayProducts4(); 
+displayProducts5();
+displayProducts6(); 
+
+
 
 // Функция для показа формы оформления заказа
 function showOrderForm() {
