@@ -20,7 +20,6 @@ displayProducts5();
 displayProducts6();  
     loadCart(); // <-- Добавьте эту строку
     updateCartCount();
-renderModals();
 });
 
 const storedProducts = localStorage.getItem('products');
@@ -48,34 +47,7 @@ const herItems = groupedItems["Для Неї"];
 const barberItems = groupedItems["Для Догляду за волоссям"];
 
   
-function renderModals() {
-    const catalogSection = document.querySelector("#catalog .cataloge");
-    catalogSection.innerHTML = "";
 
-    products.forEach(product => {
-        const modalCard = document.createElement("div");
-        modalCard.classList.add("modals");
-        modalCard.dataset.productId = product._id;
-
-        modalCard.innerHTML = `
-
-<div id="${products._id}" class="modal">
-   <div class="modal-content">
-            <span class="close" oneclick="closemodal()">&times;</span>
-        <img src="${product.preview_link}" alt="${product.name}" class="priduct-image">
-        <h3>${product.name}</h3>
-        <p>${product.description}</p>
-        <h6>идентификатор товара:   ${product.id}</h6>
-        <h6>артикул товара:   ${product.aricle}</h6>
-
-        <button class="add-to-cart" onclick="event.stoppropagation(); addtocart('${product._id}')">  ${product.uah} грн. </button>
-            </div>
-        `;
-
-
-        catalogSection.appendChild(modalCard);
-    });
-}
 
 
 
@@ -95,7 +67,9 @@ function displayProducts() {
                     <img 
                         src="${product.preview_link}" 
                         alt="${product.name}" 
-                        class="product-image" id="${products._id}">
+                        class="product-image" 
+                        onclick="event.stopPropagation(); openProductModal('${product._id}')" 
+                    >
                     <h3>${product.name}</h3>
                     <div class="price"><p>${product.UAH} грн.</p></div>
                     <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
@@ -112,6 +86,65 @@ function displayProducts() {
 }
 
 // Функция для открытия модального окна (не забудьте ее добавить)
+function openProductModal(productId) {
+    // Здесь ваш код для открытия модального окна и загрузки данных о товаре по ID
+    console.log("Открываем модальное окно для товара с ID:", productId);
+fetch(`https://dzshop24.com/api/products/${productId}`)
+    .then(response => {
+            if (!response.ok){
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        }) 
+        .then(product => {
+            renderModal(product);
+            showModal();
+        })
+        // .catch(
+        //     error => {
+        //     console.error("Ошибка при Download данных о товаре:", error);
+        // });
+    // fetch(`/api/products/${productId}`)
+    //   .then(response => response.json())
+    //   .then(product => {
+    //     // Заполнить модальное окно данными о товаре
+    //   });
+}
+
+function renderModal(product) {
+    const  modalTitle = document.getElementById('modal-title');
+    const  modalImg = document.getElementById('modal-img');
+    const  modalDescription = document.getElementById('modal-description');
+    const  modalId = document.getElementById('modal-id');
+    const  modalIdShort = document.getElementById('modal-id-short');
+    const  modalArticle = document.getElementById('modal-article');
+    const  modalBuyBtn = document.getElementById('modal-buy-btn');
+    const  modalPrice = document.getElementById('modal-price');
+    const modalCount = document.getElementById('modal-count');
+
+
+    modalTitle.textContent = product.name;
+    modalImg.src = product.preview_link;
+    modalImg.alt = product.name;
+    modalDescription.textContent = product.description;
+    modalIdShort.insertAdjacentText("beforeend", product.id);
+    modalArticle.insertAdjacentText("beforeend", product.article);
+    modalPrice.textContent = product.UAH;
+    modalId.textContent = product._id;
+    modalId.value = product._id;
+    modalCount.textContent = product.count;
+    modalBuyBtn.setAttribute('onclick', `addToCart('${product._id}')`);
+}
+
+
+function showModal() {
+    document.getElementById("product-modal").style.display = "block";
+}
+function closeModal(event) {
+    document.getElementById("product-modal").style.display = "none";
+    document.querySelector('header').scrollIntoView({behavior: 'smooth'});
+}
+
 function displayProducts2() {
     const catalogSection = document.querySelector("#catalog .products2");
     catalogSection.innerHTML = "";
@@ -119,12 +152,18 @@ function displayProducts2() {
     herItems.forEach(product => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
+        productCard.dataset.productId = product._id;
         productCard.setAttribute("onclick", "toggleFlip(event)");
 
         productCard.innerHTML = `
         <div class="product-inner">
         <div class="product-front">
-        <img src="${product.preview_link}" alt="${product.name}">
+         <img 
+                        src="${product.preview_link}" 
+                        alt="${product.name}" 
+                        class="product-image" 
+                        onclick="event.stopPropagation(); openProductModal('${product._id}')" 
+                    >
         <h3>${product.name}</h3>
         <div class="price"><p>${product.UAH} грн.</p> </div>
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
@@ -148,12 +187,18 @@ function displayProducts3() {
     barberItems.forEach(product => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
+        productCard.dataset.productId = product._id;
         productCard.setAttribute("onclick", "toggleFlip(event)");
 
         productCard.innerHTML = `
         <div class="product-inner">
         <div class="product-front">
-        <img src="${product.preview_link}" alt="${product.name}">
+         <img 
+                        src="${product.preview_link}" 
+                        alt="${product.name}" 
+                        class="product-image" 
+                        onclick="event.stopPropagation(); openProductModal('${product._id}')" 
+                    >
         <h3>${product.name}</h3>
         <div class="price"><p>${product.UAH} грн.</p> </div>
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
@@ -176,12 +221,18 @@ function displayProducts4() {
     kitchenItems.forEach(product => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
+        productCard.dataset.productId = product._id;
         productCard.setAttribute("onclick", "toggleFlip(event)");
 
         productCard.innerHTML = `
         <div class="product-inner">
         <div class="product-front">
-        <img src="${product.preview_link}" alt="${product.name}">
+         <img 
+                        src="${product.preview_link}" 
+                        alt="${product.name}" 
+                        class="product-image" 
+                        onclick="event.stopPropagation(); openProductModal('${product._id}')" 
+                    >
         <h3>${product.name}</h3>
         <div class="price"><p>${product.UAH} грн.</p> </div>
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
@@ -204,12 +255,18 @@ function displayProducts5() {
     homeItems.forEach(product => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
+        productCard.dataset.productId = product._id;
         productCard.setAttribute("onclick", "toggleFlip(event)");
 
         productCard.innerHTML = `
         <div class="product-inner">
         <div class="product-front">
-        <img src="${product.preview_link}" alt="${product.name}">
+         <img 
+                        src="${product.preview_link}" 
+                        alt="${product.name}" 
+                        class="product-image" 
+                        onclick="event.stopPropagation(); openProductModal('${product._id}')" 
+                    >
         <h3>${product.name}</h3>
         <div class="price"><p>${product.UAH} грн.</p> </div>
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
@@ -232,12 +289,18 @@ function displayProducts6() {
     mediaItems.forEach(product => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
+        productCard.dataset.productId = product._id;
         productCard.setAttribute("onclick", "toggleFlip(event)");
 
         productCard.innerHTML = `
         <div class="product-inner">
         <div class="product-front">
-        <img src="${product.preview_link}" alt="${product.name}">
+         <img 
+                        src="${product.preview_link}" 
+                        alt="${product.name}" 
+                        class="product-image" 
+                        onclick="event.stopPropagation(); openProductModal('${product._id}')" 
+                    >
         <h3>${product.name}</h3>
         <div class="price"><p>${product.UAH} грн.</p> </div>
         <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('${product._id}')">В корзину</button>
@@ -425,8 +488,6 @@ function renderCategoryProducts(categoryId, container) {
 
 
 // Вызов функции при загрузке страницы
-
-renderModals();
 displayProducts();
 displayProducts2(); 
 displayProducts3();

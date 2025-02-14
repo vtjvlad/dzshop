@@ -191,16 +191,17 @@
 <!-- Модальное окно -->
 <div id="product-modal" class="modal">
    <div class="modal-content">
-            <span class="close" oneclick="closeModal()">&times;</span>
+            <span class="close" onclick="closeModal()">&times;</span>
         <img src="" alt="" class="modal-image" id="modal-img">
-        <h3 id="modal-title"></h3>
+        <h3 id="modal-title">название товара</h3>
                         <p id="modal-description"></p>
         <h6 id="modal-article">артикул товара:</h6>
         <h6 id="modal-id-short">идентификатор товара:</h6>
-        <h6 id="modal-id">артикул товара:</h6>
+        <h6 id="modal-id">:</h6>
+        <h6 id="modal-count">количество товара:</h6>
 
 
-                        <button class="add-to-cart" id="modal-buy-btn" onclick="addToCart(`${product._id}`)"><a id="modal-price"></a> </button>
+                        <button class="add-to-cart" id="modal-buy-btn" onclick=""><a id="modal-price"></a> грн. </button>
             </div>
 
 

@@ -6,6 +6,7 @@ const fs = require('fs');
  * @param {string} outputPath - Путь для сохранения нового JSON-файла.
  * @param {any} defaultValue - Значение по умолчанию для всех ключей (например, null, "", 0).
  */
+ 
 function copyKeysFromArrayObject(templatePath, outputPath, defaultValue = null) {
     try {
         // Читаем и парсим JSON

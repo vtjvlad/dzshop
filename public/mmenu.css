@@ -3,7 +3,7 @@
 }
 
 .menu-item, .menu-open-button {
-  background: #ff4081;
+  background: #1a4de6;
   border-radius: 100%;
   width: 80px;
   height: 80px;
@@ -88,7 +88,7 @@
 }
 
 .menu-open-button {
-  z-index: 2;
+  z-index: 11370;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition-duration: 400ms;
   transform: scale(1.1, 1.1) translate3d(0, 0, 0);
