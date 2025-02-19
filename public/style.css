@@ -70,6 +70,7 @@ background: linear-gradient(to bottom, #49D4D3, #6B60DB);
     opacity: 1;
     transform: translateX(0);
 
+
 }
 
 /* Анимация бургер-кнопки при открытии */
@@ -271,6 +272,11 @@ backdrop-filter: blur(3px);
 
 
 .product-card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 13;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-wrap: pretty;
     font-size: 0.9em;
 }
 
@@ -314,6 +320,10 @@ footer {
     padding: 10px 0;
     width: 100%;
     margin-top: 80px;
+    position: relative;
+    border-radius: 10px;
+    border: 2px solid #ffffff1d;
+    backdrop-filter: blur(3px);
 }
 
 .content-section {
@@ -403,7 +413,7 @@ footer {
 
 .navbarbot {
 
-    height: 50px;
+    height: 70px;
     border: 2px solid #ffffff1d;
     border-radius: 10px;
     position: fixed;
@@ -436,7 +446,7 @@ backdrop-filter: blur(3px);
     position: relative;
     bottom: 1px;
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     text-decoration: none;
     padding: 15px 10px 5px 10px;
     margin: 0px 5px 15px 0px;
@@ -555,4 +565,11 @@ backdrop-filter: blur(3px);
 
 #catalog {
     min-height:  1137px;
+}
+
+.more {
+    position: absolute;
+    bottom: 10px;
+    height: 40px;
+    font-size: 1.4em;
 }

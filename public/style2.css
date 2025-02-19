@@ -1,4 +1,17 @@
 /* Базовые стили для меню */
+#backToTop {
+    width: 50px;
+    position: fixed;
+    bottom: 70px;
+    left: 30px;
+    background-color: #0D1E4C;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 #menu {
     max-height: 0; /* Начальное состояние: меню скрыто */
     overflow: hidden;
@@ -49,8 +62,8 @@
 }
 
 /* Активная кнопка бургер-меню */
-// #burgerButton.active {
-    background-color: #0D1E4C;
+ #burgerButton.active {
+    background-color: #0F2C6F;
     transform: rotate(90deg); /* Поворот кнопки */
 }
 
@@ -110,7 +123,7 @@
 }
 
 .biglogo {
-    height: 200px
+    height: 200px;
     width: 200px;
     background: none;
 }
@@ -160,6 +173,7 @@
     display: none;
     padding: 5px;
     background-color: #132641;
+     
 }
 
 .category-content .product-card {

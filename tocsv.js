@@ -45,4 +45,4 @@ function convertJsonToCsv(jsonPath, csvPath) {
 }
 
 // Пример использования
-convertJsonToCsv('prods.json', 'items2.csv');
+convertJsonToCsv('prods43.json', 'items2.csv');

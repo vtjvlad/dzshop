@@ -77,6 +77,7 @@ function displayProducts() {
                 <div class="product-back">
                     <h2>Описание продукта</h2>
                     <p>${product.description}</p>
+                    <button class="more" onclick="event.stopPropagation(); openProductModal('${product._id}')">Подробнее</button> 
                 </div>
             </div>
         `;
@@ -126,13 +127,13 @@ function renderModal(product) {
     modalTitle.textContent = product.name;
     modalImg.src = product.preview_link;
     modalImg.alt = product.name;
-    modalDescription.textContent = product.description;
-    modalIdShort.insertAdjacentText("beforeend", product.id);
-    modalArticle.insertAdjacentText("beforeend", product.article);
+    modalDescription.innerHTML = product.description;
+    modalIdShort.textContent = `ID: ${product.id}`;
+    modalArticle.textContent = `Артикул: ${product.article}`;
     modalPrice.textContent = product.UAH;
     modalId.textContent = product._id;
     modalId.value = product._id;
-    modalCount.textContent = product.count;
+    modalCount.textContent = `Залишилось: ${product.count}`;
     modalBuyBtn.setAttribute('onclick', `addToCart('${product._id}')`);
 }
 
@@ -142,7 +143,6 @@ function showModal() {
 }
 function closeModal(event) {
     document.getElementById("product-modal").style.display = "none";
-    document.querySelector('header').scrollIntoView({behavior: 'smooth'});
 }
 
 function displayProducts2() {
@@ -171,6 +171,7 @@ function displayProducts2() {
         <div class="product-back">
         <h2>Описание продукта</h2>
         <p>${product.description}</p>
+                    <button class="more" onclick="event.stopPropagation(); openProductModal('${product._id}')">Подробнее</button> 
         </div>
         </div>
         `;
@@ -193,7 +194,7 @@ function displayProducts3() {
         productCard.innerHTML = `
         <div class="product-inner">
         <div class="product-front">
-         <img 
+        <img 
                         src="${product.preview_link}" 
                         alt="${product.name}" 
                         class="product-image" 
@@ -206,6 +207,7 @@ function displayProducts3() {
         <div class="product-back">
         <h2>Описание продукта</h2>
         <p>${product.description}</p>
+                    <button class="more" onclick="event.stopPropagation(); openProductModal('${product._id}')">Подробнее</button> 
         </div>
         </div>
         `;
@@ -240,6 +242,7 @@ function displayProducts4() {
         <div class="product-back">
         <h2>Описание продукта</h2>
         <p>${product.description}</p>
+                    <button class="more" onclick="event.stopPropagation(); openProductModal('${product._id}')">Подробнее</button> 
         </div>
         </div>
         `;
@@ -274,6 +277,7 @@ function displayProducts5() {
         <div class="product-back">
         <h2>Описание продукта</h2>
         <p>${product.description}</p>
+                    <button class="more" onclick="event.stopPropagation(); openProductModal('${product._id}')">Подробнее</button> 
         </div>
         </div>
         `;
@@ -308,6 +312,7 @@ function displayProducts6() {
         <div class="product-back">
         <h2>Описание продукта</h2>
         <p>${product.description}</p>
+                    <button class="more" onclick="event.stopPropagation(); openProductModal('${product._id}')">Подробнее</button> 
         </div>
         </div>
         `;
@@ -690,6 +695,7 @@ function toggleCategory(header, categoryId) {
         // Открываем текущую категорию
         categoryCard.classList.add('expanded');
 
+    window.scrollTo({ top: categoryCard.offsetTop, behavior: 'smooth' });
         // Устанавливаем фон для контента и шапки
         header.style.backgroundImage = `url(${background})`;
         if (categoryContent) {
@@ -703,4 +709,23 @@ function toggleCategory(header, categoryId) {
     }
 }
 
+    // Кнопка "До верху": отображение при прокрутке и плавный скролл
+    // const backToTopBtn = document.getElementById('backToTop');
+    // window.addEventListener('scroll', function() {
+    //   backToTopBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    // });
+    // backToTopBtn.addEventListener('click', function() {
+    //   window.scrollTo({ top: 0, behavior: 'smooth' });
+    // });
 
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+window.addEventListener('scroll', function showToTopBtn() {
+    const toTopBtn = document.getElementById('toTopBtn');
+    if (window.scrollY > 900) {
+        toTopBtn.style.display = 'block';
+    } else {
+        toTopBtn.style.display = 'none';
+    }
+});
