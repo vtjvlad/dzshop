@@ -382,13 +382,13 @@ function showSection(sectionId) {
         section.style.display = 'none';
     });
     document.getElementById(sectionId).style.display = 'block';
-
-    const navbar = document.querySelector('.navbar');
-    if (sectionId === 'catalog') {
-        navbar.style.display = 'flex';
-    } else {
-        navbar.style.display = 'none';
-    }
+    //
+    // const navbar = document.querySelector('.navbar');
+    // if (sectionId === 'catalog') {
+    //     navbar.style.display = 'flex';
+    // } else {
+    //     navbar.style.display = 'none';
+    // }
     const navbarbot = document.querySelector('.navbarbot');
     const sectionsWithNavbar = ['user',
         'catalog',
@@ -721,11 +721,4 @@ function toggleCategory(header, categoryId) {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-window.addEventListener('scroll', function showToTopBtn() {
-    const toTopBtn = document.getElementById('toTopBtn');
-    if (window.scrollY > 900) {
-        toTopBtn.style.display = 'block';
-    } else {
-        toTopBtn.style.display = 'none';
-    }
-});
+

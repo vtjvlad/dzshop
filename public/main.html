@@ -57,7 +57,6 @@
 
 
 
-        <button id="toggleNavbar" class="toggle-navbar-btn">Навигация</button>
 
 
 
@@ -74,16 +73,16 @@
 
 
     <div class="container">
-        <div class="navbar container">
-
-            <a href="#" onclick="showSection('home')">Главная</a>
-            <a href="#" onclick="showSection('catalog')">Каталог</a>
-            <a href="#" onclick="showSection('about')">Акции</a>
-            <a href="#" onclick="showSection('contacts')">Инфо</a>
-
-            <a href="#" onclick="showSection('user')">Проиль</a>
-            <a href="#" onclick="showSection('cart')">Корзина</a>
-        </div>
+        <!-- <div class="navbar container"> -->
+        <!---->
+        <!--     <a href="#" onclick="showSection('home')">Главная</a> -->
+        <!--     <a href="#" onclick="showSection('catalog')">Каталог</a> -->
+        <!--     <a href="#" onclick="showSection('about')">Акции</a> -->
+        <!--     <a href="#" onclick="showSection('contacts')">Инфо</a> -->
+        <!---->
+        <!--     <a href="#" onclick="showSection('user')">Проиль</a> -->
+        <!--     <a href="#" onclick="showSection('cart')">Корзина</a> -->
+        <!-- </div> -->
 
 
         <!-- Product Section -->
@@ -343,7 +342,16 @@
   <a href="#" class="menu-item"> <i class="fa fa-cog"></i> </a>
 
 </nav>
-  <button id="backToTop" title="До верху" onclick="scrollToTop()">↑</button>
+            <button id="backToTop"> <i class="fa fa-sort-up"></i> </button>
+            <script>
+                const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function() {
+      backToTopBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    });
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+                </script>
         <!-- Footer -->
         <footer>
             <div class="wrapper">
@@ -360,18 +368,18 @@
         </footer>
         <script>
             // Функция для скрытия загрузочного экрана
-            function hideLoadingScreen() {
-                const loadingScreen = document.getElementById('loadingScreen');
-                if (loadingScreen) {
-                    loadingScreen.style.display = 'none'; // Скрываем загрузочный экран
-                    console.log('Загрузочный экран скрыт'); // Сообщение для отладки
-                } else {
-                    console.log('Не найден элемент с id loadingScreen');
-                }
-            }
-
+            // function hideLoadingScreen() {
+            //     const loadingScreen = document.getElementById('loadingScreen');
+            //     if (loadingScreen) {
+            //         loadingScreen.style.display = 'none'; // Скрываем загрузочный экран
+            //         console.log('Загрузочный экран скрыт'); // Сообщение для отладки
+            //     } else {
+            //         console.log('Не найден элемент с id loadingScreen');
+            //     }
+            // }
+            //
             // Скрываем загрузочный экран через 4 секунды
-            setTimeout(hideLoadingScreen, 4000);
+            // setTimeout(hideLoadingScreen, 4000);
 
             /*/ Скрыть загрузочный экран после полной загрузки страницы
 window.addEventListener('load', function() {
