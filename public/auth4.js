@@ -82,20 +82,4 @@ console.log(`${token}`);
     }
 }
 
-// function logout() {
-//     localStorage.removeItem('token');
-//     document.getElementById('auth-block').style.display = 'block';
-//     document.getElementById('protected-content').style.display = 'none';
-//     document.getElementById('protected-data').textContent = '';
-// }
 
-// window.onload = () => {
-//     const token = localStorage.getItem('token');
-//     if (token) {
-//         try {
-//           const username = jwt_decode(token).username;
-//         } catch (error) {
-//           console.error("Ошибка декодирования токена:", error);
-//         }
-//     }
-// };

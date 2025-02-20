@@ -6,14 +6,6 @@ const API_BASE_URL = 'https://dzshop24.com'; // Замените на URL ваш
 function getAuthToken() {
     return localStorage.getItem('token'); // Пример: получение токена из localStorage
 }
-// function updateCartCount() {
-//     const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-//     document.getElementById('cart-count').innerText = cartCount;
-// }
-
-/* cart.js */
-
-// ... (предыдущий код)
 
 // Функция для обновления счетчика товаров в корзине
 async function updateCartCount() {
