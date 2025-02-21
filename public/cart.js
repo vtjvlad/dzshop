@@ -155,6 +155,8 @@ async function addToCart(productId) {
         if (response.ok) {
             loadCart(); // Обновляем отображение корзины
             updateCartCount(); // Обновляем счетчик корзины (если у вас есть такая функция)
+            console.log("Добавлено в корзину");
+            alert("Товар добавлен в корзину");
         } else {
             const error = await response.json();
             console.log(`Не удалось добавить в корзину: ${error.message}`);
