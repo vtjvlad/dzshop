@@ -419,20 +419,13 @@ displayProducts6();
 function showOrderForm() {
     console.log("показ чекаута");
     const orderForm = document.getElementById('order-form');
-    orderForm.style.display = 'block';
+    orderForm.style.display = 'grid';
+}
+function hideOrderForm() {
+    const orderForm = document.getElementById('order-form');
+    orderForm.style.display = 'none';
 }
 
-// Добавление обработчика для кнопки "Оплатить"
-function addCheckoutButtonListener() {
-    console.log("чекаут");
-    const checkoutButton = document.querySelector('.checkout-button');
-    if (checkoutButton) {
-        checkoutButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            showOrderForm(); // Показываем форму оформления заказа
-        });
-    }
-}
 
 
 

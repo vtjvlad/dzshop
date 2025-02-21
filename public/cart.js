@@ -121,7 +121,7 @@ function displayCart(cart) {
         totalAmountDisplay.classList.add('total-amount');
         totalAmountDisplay.innerText = ` ${totalAmount.toFixed(2)} грн.`; // Ограничиваем двумя знаками после запятой
 
-        checkoutButton.classList.add('checkout-button');
+        checkoutButton.classList.add('checkout-button', "bttn-unite", "bttn-md", );
         checkoutButton.innerText = 'Оформити замовлення';
         checkoutButton.onclick = () => {
             // Здесь можно вызвать функцию для обработки оплаты

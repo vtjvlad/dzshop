@@ -6,13 +6,13 @@
     <title>DealZone</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bttn.css/0.2.4/bttn.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="mmenu.css">
     <link rel="stylesheet" href="modal.css">
     <link rel="stylesheet" href="cart.css">
-
-
+    <link rel="stylesheet" href="orderForm.css">
 </head>
 <body>
      <!-- Header -->
@@ -212,11 +212,36 @@
                          <button class="checkout-button" style="display: none;">Оплатить</button>
                      </div>        
                 </div>
-            </div>
-            <p>
-            </p>
+                <div id="order-form" class="order-form" style="display: none;">
+                        <div class="order-form-content">
+                            
+                        <span class="close" onclick="hideOrderForm()">  <i class=" fa-regular fa-xmark"></i></span>   
+                    <h2>Оформление заказа</h2>
 
-        </section>
+                    <form id="checkout-form">
+                        <input type="text" id="name" name="name" placeholder="Имя" required>
+
+                        <input type="tel" id="phone" name="phone" placeholder="Номер телефона" required>
+
+                        <input type="email" id="email" name="email" placeholder="Emile" required>
+
+                        <input type="text" id="address" name="address" placeholder="Адрес доставки" required>
+
+                        <select id="payment-method" name="payment-method" required>
+                            <option value="card">Карта</option>
+                            <option value="cash">Наличными при полчении</option>
+                            <option value="online">Онлайн</option>
+                        </select>
+
+                        <button type="submit">Подтвердить заказ</button>
+                    </form>
+                        </div>
+                </div>
+
+            </section>        
+
+        </div>
+
 
 
 
@@ -227,33 +252,7 @@
                 <p>
                     Информация о спообах оплаты.
                 </p>
-                <div id="order-form" class="order-form" style="display: none;">
-                    <h2>Оформление заказа</h2>
-
-                    <form id="checkout-form">
-                        <label for="name">Имя:</label>
-                        <input type="text" id="name" name="name" required>
-
-                        <label for="phone">Номер телефона:</label>
-                        <input type="tel" id="phone" name="phone" required>
-
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-
-                        <label for="address">Адрес доставки:</label>
-                        <input type="text" id="address" name="address" required>
-
-                        <label for="payment-method">Метод оплаты:</label>
-                        <select id="payment-method" name="payment-method" required>
-                            <option value="card">Карта</option>
-                            <option value="cash">Наличными при полчении</option>
-                            <option value="online">Онлайн</option>
-                        </select>
-
-                        <button type="submit">Подтвердить заказ</button>
-                    </form>
-                </div>
-            </section>
+                            </section>
         </div>
 
         <div class="container">
@@ -271,7 +270,8 @@
                     <h2>История заказов</h2>
                     <p>
                         Информация о заказах.
-                    </p>
+                    </p> 
+                </section>    
         </div>    
 
 
@@ -281,6 +281,7 @@
                     <p> 
                         
                     </p>
+                </section>    
         </div>  
 
         <div class="container">
@@ -289,6 +290,7 @@
                     <p> 
                         
                     </p>
+                </section>    
         </div>
      
 
