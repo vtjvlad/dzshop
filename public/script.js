@@ -356,7 +356,10 @@ function showSection(sectionId) {
         'cart',
         'payment',
         'delivery',
-        'home']; // вкладки, где отображается нижний бар
+        'home',
+        'order-history',
+        'users-tag-items',
+        'top-sujestions']; // вкладки, где отображается нижний бар
 
     if (sectionsWithNavbar.includes(sectionId)) {
         navbarbot.style.display = 'flex';

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="mmenu.css">
     <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="cart.css">
 
 
 </head>
@@ -150,21 +151,6 @@
                 </div>
 
             </div>
-<!-- Модальное окно -->
-<div id="product-modal" class="modal">
-   <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-        <img src="" alt="" class="modal-image" id="modal-img">
-        <h3 id="modal-title">название товара</h3>
-                        <p id="modal-description"></p>
-        <h6 id="modal-article">артикул товара:</h6>
-        <h6 id="modal-id-short">идентификатор товара:</h6>
-        <h6 id="modal-id">:</h6>
-        <h6 id="modal-count">количество товара:</h6>
-
-
-                        <button class="add-to-cart" id="modal-buy-btn" onclick=""><a id="modal-price"></a> грн. </button>
-            </div>
 
 
 
@@ -221,8 +207,10 @@
             <section id="cart" class="content-section" style="display: none;">
                 <h2>Корзина</h2>
                 <div class="cart-items">
-                    <div class="cart-total"></div>
-                    <button class="checkout-button" style="display: none;">Оплатить</button>
+                    <div class="pre-checkout">
+                         <div class="cart-total"></div>
+                         <button class="checkout-button" style="display: none;">Оплатить</button>
+                     </div>        
                 </div>
             </div>
             <p>
@@ -278,15 +266,42 @@
         </div>
 
 
+        <div class="container">
+                <section id="order-history" class="content-section" style="display: none;">
+                    <h2>История заказов</h2>
+                    <p>
+                        Информация о заказах.
+                    </p>
+        </div>    
 
 
+        <div class="container">
+                <section id="users-tag-items" class="content-section" style="display: none;">
+                    <h2></h2>
+                    <p> 
+                        
+                    </p>
+        </div>  
+
+        <div class="container">
+                <section id="top-sujestions" class="content-section" style="display: none;">
+                    <h2></h2>
+                    <p> 
+                        
+                    </p>
+        </div>
+     
 
         <div class="navbarbot">
-            <a href="#" onclick="showSection('user')"><i class="fas fa-user"></i></a>
-            <a href="#" onclick="showSection('catalog')"><i class="fas fa-store"></i></a>
-            <a href="#" onclick="showSection('cart')"><i class="fas fa-shopping-cart"></i></a>
-            <a href="#" onclick="showSection('payment')"><i class="fas fa-credit-card"></i></a>
-            <a href="#" onclick="showSection('delivery')"><i class="fas fa-truck"></i></a>
+<div class="items-count">
+            <span id="items-count">0</span>
+        </div>
+            <a href="#" onclick="showSection('order-history')"><i class="fas fa-table-list"></i></a>
+            
+            <a href="#" onclick="showSection('catalog')"><i class="fas fa-shop"></i></a>
+                <a href="#" onclick="showSection('cart')"> <i class="fa-solid fa-cart-shopping fa-beat"></i></a>
+            <a href="#" onclick="showSection('top-sujestions')"><i class="fas fa-scale-unbalanced-flip"></i></a>
+            <a href="#" onclick="showSection('users-tag-items')"><i class="fas fa-heart"></i></a>
         </div>
 
 <nav class="mini_menu">
@@ -297,14 +312,15 @@
     <span class="hamb hamb-3"></span>
   </label>
   
-  <a href="#" class="menu-item"> <i class="fa fa-bar-chart"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-plus"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-heart"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-envelope"></i> </a>
-  <a href="#" class="menu-item"> <i class="fa fa-cog"></i> </a>
+  <a href="#" class="menu-item" onclick="showSection('delivery')"> <i class="fa fa-truck fa-xl"></i> </a>
+  <a href="#" class="menu-item" onclick="showSection('payment')"> <i class="fa fa-credit-card fa-xl"></i> </a>
+  <a href="#" class="menu-item"> <i class="fa-brands fa-telegram fa-spin fa-spin-reverse fa-2xl"></i> </a>
+  <a href="#" class="menu-item" onclick="showSection('user')"> <i class="fa fa-user fa-xl"></i> </a>
+  <a href="#" class="menu-item" onclick="showSection('home')"> <i class="fa fa-house fa-xl"></i> </a>
 
 </nav>
-            <button id="backToTop"> <i class="fa fa-sort-up"></i> </button>
+            <button id="backToTop"> <i class="fa-solid fa-caret-up fa-beat fa-lg"></i> </button>
+
             <script>
                 const backToTopBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', function() {
@@ -317,17 +333,38 @@
         <!-- Footer -->
         <footer>
             <div class="wrapper">
-                <a href="#" class="icon"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-telegram"></i></a>
-                <a href="https://www.instagram.com/vtjvlad/" class="icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" class="icon"><i class="fa-brands fa-pinterst"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-tiktok fa-2xl"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-telegram fa-2xl"></i></a>
+                <a href="https://www.instagram.com/vtjvlad/" class="icon"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook fa-2xl"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-youtube fa-2xl"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-pinterest fa-2xl"></i></a>
             </div>
             <p>
                 2024
             </p>
         </footer>
+
+<!-- Модальное окно -->
+
+<div id="product-modal" class="modal">
+   <div class="modal-content">
+            <span class="close" onclick="closeModal()">  <i class=" fa-regular fa-xmark  fa-lg"></i></span>
+        <img src="" alt="" class="modal-image" id="modal-img">
+        <h3 id="modal-title">название товара</h3>
+                        <p id="modal-description"></p>
+        <h6 id="modal-article">артикул товара:</h6>
+        <h6 id="modal-id-short">идентификатор товара:</h6>
+        <h6 id="modal-id">:</h6>
+        <h6 id="modal-count">количество товара:</h6>
+
+
+                        <button class="add-to-cart" id="modal-buy-btn" onclick=""><a id="modal-price"></a> грн. </button>
+            </div>
+
+
+
+
         <script>
          
         </script>

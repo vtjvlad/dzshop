@@ -12,6 +12,8 @@ async function updateCartCount() {
     const authToken = getAuthToken();
     if (!authToken) {
         document.getElementById('cart-count').innerText = 0; // Сбрасываем счетчик, если пользователь не авторизован
+        
+        document.getElementById('items-count').innerText = 0; // Сбрасываем счетчик, если пользователь не авторизован
         return;
     }
 
@@ -26,6 +28,8 @@ async function updateCartCount() {
             const cart = await response.json();
             const cartCount = cart.items.reduce((total, item) => total + item.quantity, 0);
             document.getElementById('cart-count').innerText = cartCount;
+
+            document.getElementById('items-count').innerText = cartCount;
         } else {
             console.error('Ошибка при получении данных корзины для счетчика');
             document.getElementById('cart-count').innerText = 0; // Сбрасываем счетчик в случае ошибки
@@ -76,7 +80,9 @@ function displayCart(cart) {
     if (!cartSection) return; // Выходим, если элемента cart не существует
 
     const cartItemsDiv = cartSection.querySelector('.cart-items');
-    cartItemsDiv.innerHTML = ''; // Очищаем текущее содержимое корзины
+    cartItemsDiv.innerHTML = `
+                    <div class="pre-checkout"><p>Всього : </a></div>
+        `; // Очищаем текущее содержимое корзины
    if (!cart || !cart.items || cart.items.length === 0) {
     cartItemsDiv.innerHTML = '<p>Корзина пуста.</p>';
     return;
@@ -93,14 +99,15 @@ function displayCart(cart) {
         const cartItemElement = document.createElement('div');
         cartItemElement.classList.add('cart-item');
         cartItemElement.innerHTML = `
-            <p>${item.productId.name}</p>
-            <p>Цена: ${item.productId.UAH} грн.</p>
-            <p>Количество: ${item.quantity}</p>
-            <button class="remove-from-cart" onclick="removeFromCart('${item.productId._id}')">Удалить</button>
-            <button onclick="updateQuantity('${item.productId._id}', ${item.quantity - 1})">-</button>
-            <button onclick="updateQuantity('${item.productId._id}', ${item.quantity + 1})">+</button>
+            <img src="${item.productId.preview_link}" alt="${item.productId.name}" onclick="openProductModal('${item.productId._id}')">
+            <p class="name"><b>${item.productId.name}</b></p>
+            <p class="price">Цена:<b> ${item.productId.UAH} грн.</b></p>
+            <p class="count"> ${item.quantity}</p>
+            <button class="remove-from-cart" onclick="removeFromCart('${item.productId._id}')"> <i class="fa-solid fa-trash-can fa-xs"></i> </button>
+            <button class="minus" onclick="updateQuantity('${item.productId._id}', ${item.quantity - 1})"> <i class="fa-regular fa-square-minus"></i> </button>
+            <button class="plus" onclick="updateQuantity('${item.productId._id}', ${item.quantity + 1})"> <i class="fa-regular fa-square-plus"></i> </button>
         `;
-        cartItemsDiv.appendChild(cartItemElement);
+        cartItemsDiv.prepend(cartItemElement);
 
         // Увеличиваем общую сумму на цену текущего товара с учетом его количества
         totalAmount += parseFloat(item.productId.UAH) * item.quantity; // Преобразуем UAH в число
@@ -108,21 +115,22 @@ function displayCart(cart) {
 
     // Отображаем общую сумму и кнопку для оплаты, если корзина не пуста
     if (cart.items.length > 0) {
+        const preCheckoutDiv = cartSection.querySelector('.pre-checkout'); // Находим элемент для отображения общей суммы и кнопки оплаты
         const totalAmountDisplay = document.createElement('div');
-        totalAmountDisplay.classList.add('total-amount');
-        totalAmountDisplay.innerText = `Сумма к оплате: ${totalAmount.toFixed(2)} грн.`; // Ограничиваем двумя знаками после запятой
-
         const checkoutButton = document.createElement('button');
+        totalAmountDisplay.classList.add('total-amount');
+        totalAmountDisplay.innerText = ` ${totalAmount.toFixed(2)} грн.`; // Ограничиваем двумя знаками после запятой
+
         checkoutButton.classList.add('checkout-button');
-        checkoutButton.innerText = 'Оплатить';
+        checkoutButton.innerText = 'Оформити замовлення';
         checkoutButton.onclick = () => {
             // Здесь можно вызвать функцию для обработки оплаты
             showOrderForm();
             console.log('Переход к оплате...');
         };
 
-        cartItemsDiv.appendChild(totalAmountDisplay);
-        cartItemsDiv.appendChild(checkoutButton);
+        preCheckoutDiv.appendChild(totalAmountDisplay);
+        preCheckoutDiv.appendChild(checkoutButton);
     }
 
 }
