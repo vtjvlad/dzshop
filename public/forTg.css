@@ -43,3 +43,10 @@ header {
     position: relative;
     top: 40px;
 }
+
+.modal span {
+    position: relative;
+    top: 100px;
+    right: 10px;
+
+}
