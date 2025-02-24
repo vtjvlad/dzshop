@@ -440,7 +440,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
     }
     res.json({ url: `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}` });
     console.log(`Фото успешго загруженно:
-        http://vtjvlad.ddns.net/uploads/${req.file.filename}`);
+        http://ad.ddns.net/uploads/${req.file.filename}`);
 });
 
 
