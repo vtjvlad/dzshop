@@ -34,8 +34,7 @@ rl.on("line", async (input) => {
       console.log("Ответ GPT:", message.trim());
             
 const sendNotification = require("./sendTg.js");
-sendNotification(`${message.trim()}`);
-    } else {
+sendNotification(`${message.trim()}`); } else {
 
       console.log("GPT вернул пустой ответ.");
     }
