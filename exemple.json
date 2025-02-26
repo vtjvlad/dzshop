@@ -1,0 +1,53 @@
+
+{
+  "_id": {
+    "_data": "8267BC9447000000242B042C0100296E5A10042A917B6E21654A40AB024B4F934E2F4E463C6F7065726174696F6E54797065003C696E736572740046646F63756D656E744B65790046645F6964006467BC944708FC203470FA3FD1000004"
+  },
+  "operationType": "insert",
+  "clusterTime": {
+    "$timestamp": "7475012514191769636"
+  },
+  "wallTime": "2025-02-24T15:46:15.528Z",
+  "fullDocument": {
+    "_id": "67bc944708fc203470fa3fd1",
+    "userId": "675b1c24109b92176fe2cb72",
+    "name": "Владислав Втюрин",
+    "phone": "0951097083",
+    "email": "vtj.vlad@gmail.con",
+    "address": "Xerso ",
+    "paymentMethod": "card",
+    "items": [
+      {
+        "productId": "67ab9dedc7c3935a9f9726af",
+        "quantity": 1,
+        "_id": "67bc944708fc203470fa3fd2"
+      },
+      {
+        "productId": "67ab9dedc7c3935a9f9726a6",
+        "quantity": 1,
+        "_id": "67bc944708fc203470fa3fd3"
+      },
+      {
+        "productId": "67ab9dedc7c3935a9f9726a2",
+        "quantity": 1,
+        "_id": "67bc944708fc203470fa3fd4"
+      },
+      {
+        "productId": "67ab9dedc7c3935a9f9726a0",
+        "quantity": 1,
+        "_id": "67bc944708fc203470fa3fd5"
+      }
+    ],
+    "totalAmount": 3780,
+    "orderStatus": "В обработке",
+    "orderDate": "2025-02-24T15:46:15.510Z",
+    "__v": 0
+  },
+  "ns": {
+    "db": "DealZoneTest",
+    "coll": "orders"
+  },
+  "documentKey": {
+    "_id": "67bc944708fc203470fa3fd1"
+  }
+}

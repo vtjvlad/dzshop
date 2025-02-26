@@ -17,8 +17,12 @@ const orderSchema = new mongoose.Schema({
         quantity: { type: Number, required: true }
     }],
     totalAmount: { type: Number, required: true },
-    orderDate: { type: Date, default: Date.now } // Дата создания заказа
+    orderDate: { type: Date, default: Date.now },
+    orderStatus: { type: String, default: 'Новый' },
+    oStatusCode: { type: Number, default: 1 }
 });
+
+
 
 // Модель для заказа
 const Order = mongoose.model('Order', orderSchema);
@@ -33,7 +37,13 @@ async function watchChanges() {
 
     changeStream.on("change", (change) => {
         console.log("Изменение в БД:", change);
-        sendNotification(`🔔 Обновление в БД:\n\n${JSON.stringify(change, null, 2)}`);
+        
+       
+        
+
+
+
+        sendNotification(`🔔 Обновление в БД:\n\n${JSON.stringify(documentKey._id, null, 2)}`);
     });
 }
 

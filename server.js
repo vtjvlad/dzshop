@@ -461,11 +461,18 @@ const orderSchema = new mongoose.Schema({
         quantity: { type: Number, required: true }
     }],
     totalAmount: { type: Number, required: true },
-    orderDate: { type: Date, default: Date.now } // Дата создания заказа
+    orderDate: { type: Date, default: Date.now },
+    orderStatus: { type: String, default: 'В обработке' },
+    oStatusCode: { type: String, default: '1' } 
 });
+
+module.exports = orderSchema;
+
 
 // Модель для заказа
 const Order = mongoose.model('Order', orderSchema);
+
+module.exports = Order;
 
 
 /* server.js */
@@ -502,7 +509,9 @@ app.post('/api/checkout', authenticateToken, async (req, res) => {
                 productId: item.productId._id,
                 quantity: item.quantity
             })),
-            totalAmount
+            totalAmount,
+            orderStatus: 'В обработке',
+            oStatusCode: '1'
         });
 
         await order.save(); // Сохраняем заказ в базе данных
