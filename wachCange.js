@@ -37,13 +37,29 @@ async function watchChanges() {
 
     changeStream.on("change", (change) => {
         console.log("Изменение в БД:", change);
-        
-       
-        
+
+        const documentKey = change.documentKey;
+        const orderId = documentKey._id;
+        const fullDocument = change.fullDocument;
+        const { _id, userId, name, phone, email, address, paymentMethod, items, totalAmount, orderDate, orderStatus, oStatusCode } = fullDocument;
+        const { productId, quantity } = items[0]; 
+        const users = User.find();
 
 
 
-        sendNotification(`🔔 Обновление в БД:\n\n${JSON.stringify(documentKey._id, null, 2)}`);
+
+        sendNotification(
+            `🔔 Новый заказ!\n\n` +
+            `📌 ID заказа: ${_id}\n` +
+            `👤 Покупатель: ${name}\n` +
+            `📞 Телефон: ${phone}\n` +
+            `✉️ Email: ${email}\n` +
+            `📍 Адрес: ${address}\n` +
+            `💳 Оплата: ${totalAmount}\n\n` +
+            `🛒 Товары:\n` +
+            items.map(item => `- ${item.productId} (x${item.quantity})`).join("\n")   
+);
+        // sendNotification(`🔔 Обновление в БД:\n\n${JSON.stringify(orderId, null, 2)}`);
     });
 }
 
