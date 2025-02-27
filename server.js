@@ -486,7 +486,6 @@ const orderSchema = new mongoose.Schema({
 
 module.exports = orderSchema;
 
-
 // Модель для заказа
 const Order = mongoose.model('Order', orderSchema);
 
