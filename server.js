@@ -63,6 +63,11 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+module.exports = UserSchema;
+module.exports = User;
+
+
+
 // Модель пользователя Telegram
 const tgUserSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
@@ -72,6 +77,9 @@ const tgUserSchema = new mongoose.Schema({
 }, { collection: 'tg users' });
 
 const tgUser = mongoose.model('tgUser', tgUserSchema);
+
+module.exports = tgUserSchema;
+module.exports = tgUser;
 
 // Регистрация пользователя (обычная)
 app.post('/register', async (req, res) => {
@@ -225,6 +233,16 @@ const productSchema = new mongoose.Schema({
 
 // Создание модели товара
 const Products = mongoose.model('Products', productSchema);
+
+
+module.exports = productSchema;
+module.exports = Products;
+
+
+
+
+
+
 
 // ##### Корзина #####
 
@@ -467,7 +485,6 @@ const orderSchema = new mongoose.Schema({
 });
 
 module.exports = orderSchema;
-
 
 // Модель для заказа
 const Order = mongoose.model('Order', orderSchema);
