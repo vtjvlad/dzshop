@@ -32,7 +32,13 @@ const Order = mongoose.model('Order', orderSchema);
         username: { type: String, required: true },
     });
     const User = mongoose.model('User', userSchema);
-    
+
+    const tgUserSchema =  mongoose.Schema({ 
+        _id: mongoose.Schema.Types.ObjectId,
+        id: { type: Number, required: true },
+        username: { type: String, required: true },
+    }, { collection: 'tg users' });
+    const tgUser = mongoose.model('tgUser', tgUserSchema);
     const productSchema =  mongoose.Schema({
         _id: mongoose.Schema.Types.ObjectId,
         name: { type: String, required: true },
@@ -44,7 +50,8 @@ const Order = mongoose.model('Order', orderSchema);
     
 
 
-// Модель для заказа
+// Модель для заказаv
+
 
 
 async function watchChanges() {
@@ -65,20 +72,38 @@ async function watchChanges() {
         }   console.log(`${userId}`);
         
         const userIdString = userId.toString(); 
+             const productIdString = items.map(item => item.productId.toString());
+
+                
+
+
+
+
+         
+        tgUser.findOne({_id: userIdString}).then((user) => {
+            if (user) {
+                console.log(user);
+                const { id, username } = user;
+                sendNotification(`Username: ${username} telegram id: ${id}`);
+            } return;
+        });
+
         User.findOne({_id: userIdString}).then((user) => {
-            console.log(user);
-            const { username } = user;
+            if (user) {
+                console.log(user);
+                const { username } = user;
                 sendNotification(`Username: ${username}`);
-            });
-        
-        const productIdString = items.map(item => item.productId.toString());
+            } return;
+        });
+
         productIdString.forEach((id) => {
             Product.findOne({_id: id}).then((product) => {
                 console.log(product);
                 const { name, UAH } = product;
-                sendNotification(`Товар: ${name}, Price: ${UAH} .грн`);
+                sendNotification(`Товар: ${name}, Price: ${UAH} грн.`);
             });
 
+             
         });
 
 
@@ -100,3 +125,10 @@ async function watchChanges() {
 }
 
 watchChanges();
+
+
+// User.findOne({_id: userIdString}).then((user) => {
+//             console.log(user);
+//             const { username } = user;
+//                 sendNotification(`Username: ${username}`);
+//

@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
+ 
   "keywords": [],
   "author": "vtjvlad",
   "license": "ISC",
@@ -29,9 +30,14 @@
     "nodemailer": "^6.10.0",
     "nodemon": "^3.1.7",
     "openai": "^4.83.0",
-    "readline": "^1.3.0"
+    "puppeteer": "^24.4.0",
+    "readline": "^1.3.0",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
-    "eruda": "^3.4.1"
+    "eruda": "^3.4.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^26.0.0"
   }
 }

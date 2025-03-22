@@ -71,7 +71,7 @@ module.exports = User;
 // Модель пользователя Telegram
 const tgUserSchema = new mongoose.Schema({
   id: { type: String, required: true, unique: true },
-  username: { type: String, required: true },
+  username: { type: String, required: false },
   First_name: { type: String, required: true },
   Last_name: { type: String, required: false },
 }, { collection: 'tg users' });

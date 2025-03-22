@@ -1,0 +1,19 @@
+{
+            "id"
+            "name"
+            "subtitle"
+            "fullName"
+            "seoImageAlt"
+            "slug"
+            
+    
+            "price"
+            "priceRegular"
+            "priceMinimal"
+            "pbbCode"
+            "categories": [],
+            "frontendUuid"
+            "productBrand": { "id","name"}
+            "color": {"name",  "colorPbbCode"}
+            "productImages": {"mainImageUrl", "attributes": {"picture": [{Only Lasy Object }], }}
+            
