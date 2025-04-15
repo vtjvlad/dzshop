@@ -2,14 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
+
 body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #2c3e50;
-    min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #0033e6);
+    color: #333;
+    height: 3000px;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -18,52 +19,34 @@ body {
 }
 
 .gotoold {
-    position: absolute;
-    top: 20px;
+     position: absolute;
+    top: 75px;
     left: 45%;
-    text-decoration: none;
-    color: #2c3e50;
-    font-weight: 500;
-    transition: color 0.3s ease;
 }
 
-.gotoold:hover {
-    color: #3498db;
-}
+
 
 .welcome-banner {
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px;
+    border-radius: 15px;
+    background-color: rgb(255 255 255 / 40%);
     position: absolute;
     bottom: 240px;
-    padding: 25px 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    text-align: center;
-    max-width: 80%;
-}
+    padding: 10px;
+    box-shadow: 3px  4px 0.8em rgb(0 0 0 / 40%);
 
-.welcome-banner h2 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1.8em;
-}
-
-.welcome-banner p {
-    color: #7f8c8d;
-    font-size: 1.1em;
 }
 
 .container {
     position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
+    top: calc(50% - 277px);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    margin: 20px;
     padding: 20px;
 }
+
 
 .container.hidden {
     display: none;
@@ -74,84 +57,100 @@ body {
     height: 500px;
     position: relative;
     perspective: 1000px;
-    z-index: 1000;
+    z-index: 1000; 
+    
 }
 
 .auth h2 {
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
-    color: #2c3e50;
-    margin-bottom: 30px;
+    color: #333;
+    margin-bottom: 20px;
     padding-top: 20px;
-    font-weight: 600;
 }
 
+
+ /* Формы  */
 .auth form {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
 .auth form input {
     width: 100%;
-    padding: 15px;
+    padding: 12px;
     font-size: 16px;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .auth form input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
     outline: none;
-    background-color: #ffffff;
 }
 
+/* Кнопки */
 .auth button[type="submit"] {
     width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    padding: 12px;
+    background-color: #007bff;
     color: #fff;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: bold;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    transition: background-color 0.3s ease;
 }
 
 .auth button[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    background-color: #0056b3;
 }
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
 .side {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #ffffff;
+    background: #fff;
     padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     backface-visibility: hidden;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s;
+    box-shadow: 5px 7px 0.5em rgb(0 0 0 / 50%);
+
 }
 
 .side.back {
     transform: rotateY(180deg);
 }
-
 .auth.flipped .side.front {
     transform: rotateY(-180deg);
 }
 
-.auth.flipped .side.back {
+.auth.flipped .side.back{
     transform: rotateY(0deg);
 }
+
+
+
+
 
 .flip {
     position: absolute;
@@ -159,61 +158,54 @@ body {
     font-size: 16px;
     display: block;
     width: 90%;
-    padding: 12px;
+    padding: 10px;
     margin-top: 10px;
-    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+    background-color: #6c757d;
     color: white;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+    transition: background-color 0.3s ease;
 }
 
 .flip:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+    background-color: #4f5458;
 }
 
 .authCard-btn {
-    font-size: 16px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    font-size: 15px;
+    border: 0px;
+    border-radius: 15px;
+    background-color: #0055cc;
     color: #ffffff;
     position: fixed;
     bottom: 170px;
     left: 25%;
-    height: 45px;
+    height: 30px;
     width: 50%;
-    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
-    font-weight: 600;
-    transition: all 0.3s ease;
+box-shadow: 3px  4px 0.8em rgb(0 0 0 / 40%);
 }
 
 .authCard-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(52, 152, 219, 0.4);
+    background-color: #1f7a35;
 }
 
 .btn {
-    font-size: 20px;
-    border: none;
-    border-radius: 15px;
-    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    font-size: 35px;
+    border: 0px;
+    border-radius: 20px;
+    background-color: #0055cc;
     color: #ffffff;
     position: fixed;
     bottom: 70px;
     left: 10%;
-    height: 60px;
+    height: 70px;
     width: 80%;
-    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
-    font-weight: 600;
-    transition: all 0.3s ease;
+box-shadow: 3px  4px 0.8em rgb(0 0 0 / 40%);
 }
 
+
+
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(52, 152, 219, 0.4);
+    background-color: #1a1a96;
 }
